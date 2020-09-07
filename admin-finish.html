@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>WhoAmI</title>
+</head>
+<body>
+  <!-- Header -->
+  <header class='header text-center'>
+    <h1 class='header__title upper rombs'>
+      Who Am I?
+    </h1>
+  </header>
+
+  <!-- Main -->
+  <main class='main'>
+    <!-- Player Game result -->
+    <div class="game-result text-center">
+      <h2 class="team__title rombs upper">Your on 4th place!</h2>
+
+      <div class="text-block group">
+        Restart to next game. Or exit to menu to create your new game.
+      </div>
+
+      <button id='menu' class="btn btn_trans game-result__btn group" style='width: 260px;'>Menu</button>
+      <button class="btn btn_brown" style='width: 260px;'>Restart game</button>
+    </div>
+
+    <!-- Team -->
+    <div class='team'>
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Your team</h2>
+      </div>
+
+      <!-- Table -->
+      <table class="table team__table">
+        <thead>
+          <tr>
+            <th>Names</th>
+            <th>Characters</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class='winner color-orange'>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>Win</td>
+          </tr>
+          <tr class='admin'>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+          <tr class='self'>
+            <td>
+              <div class="self__row flex a-center">
+                <div class="self__value">Sasha</div>
+                <img src="img/edit.svg" alt="">
+              </div>
+            </td>
+            <td>
+              <div class="self__row flex a-center">
+                <div class="self__value">Mikky</div>
+                <img src="img/edit.svg" alt="">
+              </div>
+            </td>
+            <td>2nd</td>
+          </tr>
+
+          <tr>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+
+          <tr>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Rules -->
+      <div class="rules text-center">
+        Need to read rules? <a class='rules__link' href="#">Click here</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

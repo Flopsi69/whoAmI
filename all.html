@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>WhoAmI</title>
+</head>
+
+<body>
+  <!-- <button class="btn btn_brown disabled">test</button> -->
+  <!-- <button class="btn btn_trans disabled">test</button> -->
+  <!-- <input type="text" class="input" value='Nikola|'> -->
+
+  <!-- Header -->
+  <header class='header text-center'>
+    <h1 class='header__title upper rombs'>
+      Who Am I?
+    </h1>
+  </header>
+
+  <!-- Main -->
+  <main class='main'>
+    <!-- Player info -->
+    <div class="player-info">
+      <!-- Auth -->
+      <form class="player-info__form form">
+        <div class="form__group group required">
+          <input type="text" class="input" placeholder='Enter your name'>
+        </div>
+        <div class="text-center">
+          <button id='join-game' class="btn btn_brown disabled">Join</button>
+        </div>
+      </form>
+
+      <!-- Alert -->
+      <div class="player-info__alert text-center text-block">
+        <img src="img/check.svg" alt="">
+        Your successfully submit your character! <br> If you need edit click pensil near your name of character name.
+      </div>
+    </div>
+
+    <!-- Player Game result -->
+    <div class="game-result text-center">
+      <h2 class="team__title rombs upper color-orange">Your win!</h2>
+
+      <div class="text-block group">
+        Wait for the next game. Or exit to menu to create your new game.
+      </div>
+
+      <button id='menu' class="btn btn_trans game-result__btn">Menu</button>
+    </div>
+
+    <div class="game-active text-center">
+      <div class="text-block group">
+        Click check when somebody guessed his name. <br> Finished game if your team didn’t want to play more.
+      </div>
+
+      <button class="btn btn_trans">Finish game</button>
+    </div>
+
+    <!-- Admin Create -->
+    <div class="create text-center">
+      <div class="text-block group">
+        Create your team and star new game with your friends.
+      </div>
+
+      <div class="group required">
+        <input type="text" class="input" placeholder='Team name'>
+      </div>
+
+      <button class="btn btn_brown">Create team</button>
+    </div>
+
+    <!-- Rules -->
+    <div class="rules">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Rules</h2>
+      </div>
+
+      <div class="text-block group">
+        Each participant enters his name and the name of the character. All of them are entered in the table. After
+        starting the game, you get a character that your friend wrote down. But you don't know what this character is.
+        You need to guess it by asking questions. You can only ask such questions, the answer to which is Yes or No. If
+        the answer to your question is no, the turn goes to the next player.
+      </div>
+      <div class="text-block group">
+        Purpose of the game: first of all to guess your character.
+      </div>
+    </div>
+
+    <!-- Teams -->
+    <div class="teams">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Other teams</h2>
+      </div>
+
+      <!-- Table -->
+      <table class="table teams__table group">
+        <thead>
+          <tr>
+            <th>Team name</th>
+            <th>Members</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Sasha</td>
+            <td>5</td>
+          </tr>
+          <tr>
+            <td>Sasha</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">and more 42 teams playing</h2>
+      </div>
+    </div>
+
+    <!-- Team -->
+    <div class='team'>
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Your team</h2>
+      </div>
+
+      <!-- Table -->
+      <table class="table team__table">
+        <thead>
+          <tr>
+            <th>Names</th>
+            <th>Characters</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class='winner color-orange'>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>Win</td>
+          </tr>
+          <tr class='admin'>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+          <tr class='self'>
+            <td>
+              <div class="self__row flex a-center">
+                <div class="self__value">Sasha</div>
+                <img src="img/edit.svg" alt="">
+              </div>
+            </td>
+            <td>
+              <div class="self__row flex a-center">
+                <div class="self__value">Mikky</div>
+                <img src="img/edit.svg" alt="">
+              </div>
+            </td>
+            <td>2nd</td>
+          </tr>
+
+          <tr>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+
+          <tr>
+            <td>Sasha</td>
+            <td>Mikky</td>
+            <td>3rd</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Rules -->
+      <div class="rules text-center">
+        Need to read rules? <a class='rules__link' href="#">Click here</a>
+      </div>
+    </div>
+
+    <div class="team-link text-center">
+      <div class="text-block">
+        Send it link to your friend to invite them
+      </div>
+      <a class='group'
+        href="https://slrjoifgjdogf///sdfsdfsgjbpyg/rg/dfh9674943">https://slrjoifgjdogf///sdfsdfsgjbpyg/rg/dfh9674943</a>
+      <button class="btn btn_trans">Copy link</button>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>

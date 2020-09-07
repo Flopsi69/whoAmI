@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="css/style.min.css">
+  <title>WhoAmI</title>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class='header text-center'>
+    <h1 class='header__title upper rombs'>
+      Who Am I?
+    </h1>
+  </header>
+
+  <!-- Main -->
+  <main class='main'>
+    <!-- Admin Create -->
+    <div class="game-create text-center">
+      <div class="text-block group">
+        Create your team and star new game with your friends.
+      </div>
+
+      <div class="group required">
+        <input type="text" class="input create-name" placeholder='Team name'>
+      </div>
+
+      <button id='create-game' class="btn btn_brown">Create team</button>
+    </div>
+
+    <!-- Rules -->
+    <div class="rules">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Rules</h2>
+      </div>
+
+      <div class="text-block group">
+        Each participant enters his name and the name of the character. All of them are entered in the table. After
+        starting the game, you get a character that your friend wrote down. But you don't know what this character is.
+        You need to guess it by asking questions. You can only ask such questions, the answer to which is Yes or No. If
+        the answer to your question is no, the turn goes to the next player.
+      </div>
+      <div class="text-block group">
+        Purpose of the game: first of all to guess your character.
+      </div>
+    </div>
+
+    <!-- Teams -->
+    <div class="teams">
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">Other teams</h2>
+      </div>
+
+      <!-- Table -->
+      <table id='js-table' class="table teams__table group">
+        <thead>
+          <tr>
+            <th>Team name</th>
+            <th>Members</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Title -->
+      <div class="text-center">
+        <h2 class="team__title rombs upper">and more <span class="js-teams-num">42</span> teams playing</h2>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
