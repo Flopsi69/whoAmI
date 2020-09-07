@@ -27,7 +27,7 @@ let getGameInfo = (id, cb) => {
     type: "post",
     data: {},
     headers: {
-      id_fix: FIX_ID,
+      // id_fix: FIX_ID,
       game_id: id,
     },
     success: function (data) {
@@ -212,8 +212,8 @@ window.onload = (e) => {
         type: "post",
         headers: {
           game_id: game[1],
-          id_fix: FIX_ID,
-          pass: "123",
+          // id_fix: FIX_ID,
+          // pass: "123",
         },
         data: {},
         success: function (data) {
@@ -366,8 +366,8 @@ $("#create-game").click(() => {
     type: "post",
     data: {},
     headers: {
-      id_fix: FIX_ID,
-      pass: "123",
+      // id_fix: FIX_ID,
+      // pass: "123",
       name: $("create-name").val(),
     },
     success: function (data) {
@@ -418,7 +418,7 @@ $("#start-game").click(() => {
     type: "post",
     data: {},
     headers: {
-      id_fix: FIX_ID,
+      // id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
     },
     success: function (data) {
@@ -450,7 +450,7 @@ $("#submit_character").click(() => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      id_fix: FIX_ID,
+      // id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
       name: playerName.value,
       character: playerCharacter.value,
@@ -486,7 +486,7 @@ let setWinFor = (id) => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      id_fix: FIX_ID,
+      // id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
       user: id,
     },
@@ -512,7 +512,7 @@ $("#finish").click(() => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      id_fix: FIX_ID,
+      // id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
     },
     data: {},
