@@ -74,7 +74,11 @@ function addUsersRow(
     console.log("length", $(".self__row .player-edit").length);
     if ($(".self__row .player-edit").length == 0) {
       $(".self__row").append(
-        "<img class='player-edit' src='img/edit.svg' alt=''>"
+        `<svg class='player-edit' width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="11.3137" width="5" height="10" transform="rotate(45 11.3137 0)" fill="#594444"/>
+        <path d="M1.76776 13.0815L2.88848 8.89889L5.95034 11.9608L1.76776 13.0815Z" fill="#594444"/>
+        </svg>
+        `
       );
     }
   } else {
@@ -356,7 +360,7 @@ $("#join-game").click(() => {
 });
 
 $("#create-game").click(() => {
-  if (!validateInput(".create-name", "Enter name")) {
+  if (!validateInput(".create-name", "Enter team name")) {
     return false;
   }
   $.ajax({
@@ -518,14 +522,14 @@ $("#finish").click(() => {
     data: {},
     success: function (data) {
       console.info(data);
-      globalUpdate();
+      // globalUpdate();
     },
     error: function (data) {
       console.info(data);
     },
   });
 
-  window.open("./", (target = "_self"));
+  // window.open("./", (target = "_self"));
 });
 
 $(".player-info__form input").keyup(function () {
@@ -544,6 +548,11 @@ $(".player-info__form input").keyup(function () {
   } else {
     $(".btn", parent).addClass("disabled");
   }
+});
+
+$(document).on("click", ".rules__link", function (e) {
+  e.preventDefault();
+  $(".rules__link-toggle").slideToggle();
 });
 
 $(document).on("click", ".self__row .player-edit", function () {

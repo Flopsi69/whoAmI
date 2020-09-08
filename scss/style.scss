@@ -309,7 +309,7 @@ textarea {
   position: absolute;
   color: #d02727;
   bottom: 0;
-  left: 0;
+  left: 18px;
   transform: translateY(110%);
   font-size: 12px;
 }
@@ -390,6 +390,10 @@ textarea {
   }
 }
 
+.player-edit {
+  margin-left: 5px;
+}
+
 .player-lobby {
   display: none;
 }
@@ -441,6 +445,11 @@ textarea {
   .text-block {
     text-indent: 25px;
     max-width: 100%;
+  }
+  &__link {
+    &-toggle {
+      display: none;
+    }
   }
 }
 
