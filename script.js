@@ -102,7 +102,6 @@ function addUsersRow(
   //if (userHost) {
 
   if (started && window.isHost && wonStatus === false) {
-    $("");
     winStatus.innerHTML = `
     <label class="checkbox">
       <input class="checkbox__input" type="checkbox">
@@ -244,7 +243,7 @@ window.onload = (e) => {
     headers: {},
     success: function (data) {
       // TODO back
-      // window.MyId = data;
+      window.MyId = data;
       // window.MyId = FIX_ID;
       console.log("MyId is set to", data);
     },
