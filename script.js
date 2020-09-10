@@ -283,8 +283,8 @@ window.onload = (e) => {
     headers: {},
     success: function (data) {
       // TODO back
-      // window.MyId = data;
-      window.MyId = FIX_ID;
+      window.MyId = data;
+      // window.MyId = FIX_ID;
       console.log("MyId is set to", data);
     },
     error: function (data) {},
