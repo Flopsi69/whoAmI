@@ -13,10 +13,15 @@ const playerCharacter = document.querySelector(".player-character");
 const gameInput = document.getElementsByClassName("input-game");
 
 let FIX_ID;
-if (window.location.search.length) {
-  FIX_ID = "asdasdasdasdasdasd";
+
+if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+  if (window.location.search.length) {
+    FIX_ID = "asdasdasdasdasdasd";
+  } else {
+    FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcde3";
+  }
 } else {
-  FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcde3";
+  FIX_ID = false;
 }
 
 let getGameInfo = (id, cb) => {
@@ -47,7 +52,8 @@ function addUsersRow(
   userHost,
   started,
   wonStatus,
-  userid
+  userid,
+  wonPlace = 1
 ) {
   const tableRef = document.getElementById(tableID);
   const dataRow = tableRef.insertRow(1);
@@ -89,8 +95,29 @@ function addUsersRow(
   const winStatus = dataRow.insertCell(2);
 
   if (wonStatus === true) {
-    $(dataRow).addClass("winner color-orange");
-    winStatus.innerHTML = `Win`;
+    let wonPlaceText = wonPlace;
+    if (wonPlace == 1) {
+      $(dataRow).addClass("winner color-orange");
+      winStatus.innerHTML = `Win`;
+    } else {
+      switch (wonPlace) {
+        case "1":
+          wonPlaceText += "nd";
+          break;
+        case "2":
+          wonPlaceText += "nd";
+          break;
+        case "2":
+          wonPlaceText += "rd";
+          break;
+
+        default:
+          wonPlaceText += "th";
+          break;
+      }
+
+      winStatus.innerHTML = wonPlaceText;
+    }
   } else {
     winStatus.innerHTML = `-`;
   }
@@ -131,8 +158,20 @@ let redrawUsers = (game) => {
     }
   });
 
+  if (game.Started) {
+    $(".player-info__alert").slideUp();
+  } else {
+    $(".player-info").show();
+    if ($(".player-info__alert").css("display") == "none") {
+      $(".player-info__form").slideDown();
+      $(".game-active").slideUp();
+    }
+  }
+
   if (game.Started || !window.isHost) {
     $(".team-link").hide();
+  } else {
+    $(".team-link").show();
   }
 
   if (window.isHost) {
@@ -169,7 +208,8 @@ let redrawUsers = (game) => {
       e.Host,
       game.Started,
       e.Won,
-      e.Id
+      e.Id,
+      e.WonPlace
     );
   });
 };
