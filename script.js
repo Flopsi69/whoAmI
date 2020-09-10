@@ -16,7 +16,7 @@ let FIX_ID;
 if (window.location.search.length) {
   FIX_ID = "asdasdasdasdasdasd";
 } else {
-  FIX_ID = "asdasdas";
+  FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcde3";
 }
 
 let getGameInfo = (id, cb) => {
@@ -27,7 +27,7 @@ let getGameInfo = (id, cb) => {
     type: "post",
     data: {},
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       game_id: id,
     },
     success: function (data) {
@@ -215,8 +215,8 @@ window.onload = (e) => {
         type: "post",
         headers: {
           game_id: game[1],
-          // id_fix: FIX_ID,
-          // pass: "123",
+          id_fix: FIX_ID,
+          pass: "123",
         },
         data: {},
         success: function (data) {
@@ -243,8 +243,8 @@ window.onload = (e) => {
     headers: {},
     success: function (data) {
       // TODO back
-      window.MyId = data;
-      // window.MyId = FIX_ID;
+      // window.MyId = data;
+      window.MyId = FIX_ID;
       console.log("MyId is set to", data);
     },
     error: function (data) {},
@@ -369,9 +369,9 @@ $("#create-game").click(() => {
     type: "post",
     data: {},
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       // pass: "123",
-      name: $("create-name").val(),
+      name: $(".create-name").val(),
     },
     success: function (data) {
       console.log(data);
@@ -421,7 +421,7 @@ $("#start-game").click(() => {
     type: "post",
     data: {},
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
     },
     success: function (data) {
@@ -453,7 +453,7 @@ $("#submit_character").click(() => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
       name: playerName.value,
       character: playerCharacter.value,
@@ -489,7 +489,7 @@ let setWinFor = (id) => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
       user: id,
     },
@@ -515,7 +515,7 @@ $("#finish").click(() => {
     xhrFields: { withCredentials: true },
     type: "post",
     headers: {
-      // id_fix: FIX_ID,
+      id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
     },
     data: {},
