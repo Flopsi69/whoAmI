@@ -21,7 +21,7 @@ if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
     FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcde3";
   }
 } else {
-  FIX_ID = false;
+  FIX_ID = "";
 }
 
 let getGameInfo = (id, cb) => {
