@@ -16,7 +16,7 @@ let FIX_ID;
 
 if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
   if (window.location.search.length) {
-    FIX_ID = "asdasdasdasdasdasd";
+    FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcd55";
   } else {
     FIX_ID = "ad069d09-675a-4fb1-82e5-c10b391fcde3";
   }
@@ -101,15 +101,16 @@ function addUsersRow(
 
   if (wonStatus) {
     let wonPlaceText = wonPlace;
+    console.log(wonPlaceText);
     switch (wonPlace) {
-      case "1":
+      case 1:
         $(dataRow).addClass("winner color-orange");
         wonPlaceText = `Win`;
         break;
-      case "2":
+      case 2:
         wonPlaceText += "nd";
         break;
-      case "3":
+      case 3:
         wonPlaceText += "rd";
         break;
 
@@ -121,7 +122,7 @@ function addUsersRow(
     winStatus.innerHTML = wonPlaceText;
   } else if (started && window.isHost) {
     winStatus.innerHTML = `
-    <label class="checkbox">
+    <label class="checkbox" data-id="${userid}">
       <input class="checkbox__input" type="checkbox">
       <span class="checkbox__checkmark"></span>
     </label>
