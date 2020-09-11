@@ -94,54 +94,45 @@ function addUsersRow(
 
   const winStatus = dataRow.insertCell(2);
 
-  if (wonStatus === true) {
-    let wonPlaceText = wonPlace;
-    if (wonPlace == 1) {
-      $(dataRow).addClass("winner color-orange");
-      winStatus.innerHTML = `Win`;
-    } else {
-      switch (wonPlace) {
-        case "1":
-          wonPlaceText += "nd";
-          break;
-        case "2":
-          wonPlaceText += "nd";
-          break;
-        case "2":
-          wonPlaceText += "rd";
-          break;
-
-        default:
-          wonPlaceText += "th";
-          break;
-      }
-
-      winStatus.innerHTML = wonPlaceText;
-    }
-  } else {
-    winStatus.innerHTML = `-`;
-  }
-
   nameCell.classList.add("user");
   if (userHost) {
     nameCell.classList.add("userhost");
   }
-  //if (userHost) {
 
-  if (started && window.isHost && wonStatus === false) {
+  if (wonStatus) {
+    let wonPlaceText = wonPlace;
+    switch (wonPlace) {
+      case "1":
+        $(dataRow).addClass("winner color-orange");
+        wonPlaceText = `Win`;
+        break;
+      case "2":
+        wonPlaceText += "nd";
+        break;
+      case "3":
+        wonPlaceText += "rd";
+        break;
+
+      default:
+        wonPlaceText += "th";
+        break;
+    }
+
+    winStatus.innerHTML = wonPlaceText;
+  } else if (started && window.isHost) {
     winStatus.innerHTML = `
     <label class="checkbox">
       <input class="checkbox__input" type="checkbox">
       <span class="checkbox__checkmark"></span>
     </label>
     `;
-    $(".checkbox input", $(".users-row")).on("change", function (e) {
-      e.preventDefault();
+    $(".checkbox input").on("change", function () {
       $(this).parent().css("pointer-events", "none");
       setWinFor(userid);
     });
+  } else {
+    winStatus.innerHTML = `-`;
   }
-  //}
 }
 
 let globalUpdate = () => {
@@ -203,6 +194,7 @@ let redrawUsers = (game) => {
     } else {
       if (e.Id == window.MyId) charAssigned = e.CharacterAdded;
     }
+
     addUsersRow(
       "js-player-lobby",
       name,
