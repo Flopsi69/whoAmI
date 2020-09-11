@@ -135,7 +135,9 @@ function addUsersRow(
       <span class="checkbox__checkmark"></span>
     </label>
     `;
-    $(".checkbox", $(".users-row")).click(() => {
+    $(".checkbox input", $(".users-row")).on("change", function (e) {
+      e.preventDefault();
+      $(this).parent().css("pointer-events", "none");
       setWinFor(userid);
     });
   }
@@ -280,8 +282,14 @@ window.onload = (e) => {
     data: {},
     headers: {},
     success: function (data) {
-      window.MyId = data;
-      // window.MyId = FIX_ID;
+      if (
+        location.hostname === "localhost" ||
+        location.hostname === "127.0.0.1"
+      ) {
+        window.MyId = FIX_ID;
+      } else {
+        window.MyId = data;
+      }
       console.log("MyId is set to", data);
 
       if (window.location.search.length) {
