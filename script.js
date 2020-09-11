@@ -243,10 +243,8 @@ const validateInput = (input, error) => {
 };
 
 window.onload = (e) => {
-  if (window.location.search.length) {
+  function joinExistGame() {
     let game = window.location.search.substr(1).split("=");
-    console.log(game);
-    console.log("window.CurrentGame", window.CurrentGame);
     if (game[1].length) {
       $.ajax({
         url: host + "/join_game",
@@ -255,8 +253,8 @@ window.onload = (e) => {
         type: "post",
         headers: {
           game_id: game[1],
-          id_fix: FIX_ID,
-          pass: "123",
+          // id_fix: FIX_ID,
+          // pass: "123",
         },
         data: {},
         success: function (data) {
@@ -282,10 +280,13 @@ window.onload = (e) => {
     data: {},
     headers: {},
     success: function (data) {
-      // TODO back
       window.MyId = data;
       // window.MyId = FIX_ID;
       console.log("MyId is set to", data);
+
+      if (window.location.search.length) {
+        joinExistGame();
+      }
     },
     error: function (data) {},
   });
