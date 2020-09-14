@@ -129,7 +129,9 @@ function addUsersRow(
     `;
     $(".checkbox input").on("change", function () {
       $(this).parent().css("pointer-events", "none");
-      setWinFor(userid);
+      console.log("click input: ", $(this));
+      console.log("userId win: ", $(this).parent().data("id"));
+      setWinFor($(this).parent().data("id"));
     });
   } else {
     winStatus.innerHTML = `-`;
@@ -248,7 +250,7 @@ window.onload = (e) => {
         type: "post",
         headers: {
           game_id: game[1],
-          // id_fix: FIX_ID,
+          id_fix: FIX_ID,
           // pass: "123",
         },
         data: {},
