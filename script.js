@@ -130,7 +130,6 @@ function addUsersRow(
     $(".checkbox input").on("change", function () {
       $(this).parent().css("pointer-events", "none");
       console.log("click input: ", $(this));
-      console.log("userId win: ", $(this).parent().data("id"));
       setWinFor($(this).parent().data("id"));
     });
   } else {
