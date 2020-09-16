@@ -415,7 +415,7 @@ $("#create-game").click(() => {
     headers: {
       id_fix: FIX_ID,
       // pass: "123",
-      name: $(".create-name").val(),
+      name: encodeURIComponent($(".create-name").val()),
     },
     success: function (data) {
       console.log(data);
@@ -500,7 +500,7 @@ $("#submit_character").click(() => {
       id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
       name: playerName.value,
-      character: playerCharacter.value,
+      character: encodeURIComponent(playerCharacter.value),
     },
     data: {},
     success: function (data) {
