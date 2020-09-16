@@ -43,7 +43,7 @@ let getGameInfo = (id, cb) => {
   });
 };
 
-const host = "http://whoamigames.com/";
+const host = "http://whoamigames.com";
 
 function addUsersRow(
   tableID,
@@ -178,8 +178,25 @@ let redrawUsers = (game) => {
     $(".game-active .text-block").hide();
   }
 
-  if (window.isHost && !game.Started) $("#start-game").show();
-  else $("#start-game").hide();
+  if (window.isHost && !game.Started) {
+    $("#start-game").show();
+    let emtyUserName = false;
+    game.GameUsers.forEach((e) => {
+      if (!e.Name.length) {
+        emtyUserName = true;
+      }
+    });
+
+    if (emtyUserName) {
+      $("#start-game").addClass("disabled");
+    } else {
+      $("#start-game").removeClass("disabled");
+    }
+  } else {
+    $("#start-game").hide();
+  }
+
+  $(".team .team__title").html(game.PublicName);
 
   game.GameUsers.forEach((e) => {
     let name = e.Name;
@@ -225,12 +242,17 @@ let updateUserScreen = (data) => {
 };
 
 const validateInput = (input, error) => {
+  console.log("validate", $(input).val().trim().length);
+
   let inputParent = $(input).parent();
   if (inputParent.hasClass("error-input")) {
     inputParent.removeClass("error-input");
     inputParent.find(".error-text").remove();
   }
-  if ($(input).val().trim() !== "") {
+
+  if ($(input).val().trim().length > 20) {
+    error = "Max length 20 symbols (now: " + $(input).val().length + "/20)";
+  } else if ($(input).val().trim() !== "") {
     return true;
   }
   inputParent.addClass("error-input");
@@ -304,27 +326,37 @@ window.onload = (e) => {
       let toJoin = data.ToJoin ? data.ToJoin : [];
       let myGames = data.GamesYoureIn ? data.GamesYoureIn : [];
       window.AllGames = toJoin.concat(myGames);
-      if (data.GamesYoureIn) {
-        data.GamesYoureIn.forEach((element) => {
-          let gameName = element.PublicName;
-          let gameId = element.Id;
-          let users = element.GameUsers;
-          element.ImIn = true;
-          addRow("js-table", gameId, gameName, users, true);
-        });
+      // if (data.GamesYoureIn) {
+      //   data.GamesYoureIn.forEach((element) => {
+      //     let gameName = element.PublicName;
+      //     let gameId = element.Id;
+      //     let users = element.GameUsers;
+      //     element.ImIn = true;
+      //     addRow("js-table", gameId, gameName, users, true);
+      //   });
 
-        $('input:radio[name="game"]').change(function () {
-          gameId = $(this).attr("id");
-          window.selectedGame = gameId;
-          window.CurrentGame = window.AllGames.find((e) => {
-            return e.Id == gameId;
-          });
-        });
-      }
+      //   $('input:radio[name="game"]').change(function () {
+      //     gameId = $(this).attr("id");
+      //     window.selectedGame = gameId;
+      //     window.CurrentGame = window.AllGames.find((e) => {
+      //       return e.Id == gameId;
+      //     });
+      //   });
+      // }
 
       if (data.ToJoin) {
         window.toJoin = data.ToJoin;
-        data.ToJoin.forEach((element) => {
+        let i = 0;
+        let arrayLastGames = [];
+        while (i < 6) {
+          let el = data.ToJoin.pop();
+          arrayLastGames.push(el);
+          i++;
+        }
+
+        arrayLastGames.reverse();
+
+        arrayLastGames.forEach((element) => {
           let gameName = element.PublicName;
           let gameId = element.Id;
           let users = element.GameUsers;
@@ -405,6 +437,7 @@ $("#create-game").click(() => {
   if (!validateInput(".create-name", "Enter team name")) {
     return false;
   }
+
   $.ajax({
     url: host + "/create_game",
     contentType: "application/json; charset=utf-8",
@@ -424,6 +457,7 @@ $("#create-game").click(() => {
       updateUserScreen(data);
       let teamLink = location.origin + "?game_id=" + data.LinkToken;
       $(".team-link a").attr("href", teamLink).html(teamLink);
+      // $(".team .team__title").html($(".create-name").val());
       //globalUpdate();
     },
     error: function (data) {

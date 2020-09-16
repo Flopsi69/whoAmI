@@ -185,6 +185,9 @@ textarea {
   border: 2px solid $br;
   &.disabled {
     opacity: 0.5;
+    .player-info__alert & {
+      pointer-events: none;
+    }
   }
   &:hover {
     border-color: $br-h;
