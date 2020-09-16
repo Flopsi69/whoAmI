@@ -499,7 +499,7 @@ $("#submit_character").click(() => {
     headers: {
       id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
-      name: playerName.value,
+      name: encodeURIComponent(playerName.value),
       character: encodeURIComponent(playerCharacter.value),
     },
     data: {},
