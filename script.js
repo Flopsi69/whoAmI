@@ -43,7 +43,7 @@ let getGameInfo = (id, cb) => {
   });
 };
 
-const host = "http://ec2-3-83-130-30.compute-1.amazonaws.com:8081";
+const host = "http://whoamigames.com/";
 
 function addUsersRow(
   tableID,
@@ -414,7 +414,7 @@ $("#create-game").click(() => {
     headers: {
       id_fix: FIX_ID,
       // pass: "123",
-      name: $(".create-name").val(),
+      name: encodeURIComponent($(".create-name").val()),
     },
     success: function (data) {
       console.log(data);
@@ -498,8 +498,8 @@ $("#submit_character").click(() => {
     headers: {
       id_fix: FIX_ID,
       game_id: window.CurrentGame.Id,
-      name: playerName.value,
-      character: playerCharacter.value,
+      name: encodeURIComponent(playerName.value),
+      character: encodeURIComponent(playerCharacter.value),
     },
     data: {},
     success: function (data) {
