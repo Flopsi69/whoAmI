@@ -24,6 +24,13 @@ if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
   FIX_ID = "";
 }
 
+window.addEventListener("beforeunload", function (e) {
+  // Cancel the event
+  e.preventDefault(); // If you prevent default behavior in Mozilla Firefox prompt will always be shown
+  // Chrome requires returnValue to be set
+  e.returnValue = "Close tab?";
+});
+
 let getGameInfo = (id, cb) => {
   $.ajax({
     url: host + "/game_info",
@@ -155,6 +162,8 @@ let redrawUsers = (game) => {
 
   if (game.Started) {
     $(".player-info__alert").slideUp();
+    $(".player-info__form").slideUp();
+    console.log("down");
   } else {
     $(".player-info").show();
     if ($(".player-info__alert").css("display") == "none") {
@@ -182,7 +191,7 @@ let redrawUsers = (game) => {
     $("#start-game").show();
     let emtyUserName = false;
     game.GameUsers.forEach((e) => {
-      if (!e.Name.length) {
+      if (!e.Name.length || !e.CharacterAdded.length) {
         emtyUserName = true;
       }
     });
@@ -503,6 +512,7 @@ $("#start-game").click(() => {
     },
     success: function (data) {
       $(".player-info").slideUp();
+      $(".player-info__form").slideUp();
       $(".game-active ").slideDown();
       console.info(data);
     },
